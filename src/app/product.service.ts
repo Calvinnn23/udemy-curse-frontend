@@ -21,4 +21,12 @@ export class ProductService {
   getProductById(id: number) {
     return this.clientHttp.get<Product>(`${this.urlBase}/${id}`);
   }
+
+  updateProduct(id: number, product: Product): Observable<Object> {
+    return this.clientHttp.put(`${this.urlBase}/${id}`, product);
+  }
+
+  deleteProduct(id: number): Observable<Object> {
+    return this.clientHttp.delete(`${this.urlBase}/${id}`);
+  }
 }

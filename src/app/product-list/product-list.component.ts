@@ -27,4 +27,11 @@ export class ProductListComponent {
   updateProduct(idProduct: number) {
     this.router.navigate(['editar-producto', idProduct]);
   }
+
+  deleteProduct(idProduct: number) {
+    this.productService.deleteProduct(idProduct).subscribe({
+      next: (data) => this.getProducts(),
+      error: (error) => console.log(error),
+    });
+  }
 }

@@ -25,5 +25,17 @@ export class UpdateProductComponent {
     });
   }
 
-  onSubmit() {}
+  onSubmit() {
+    this.saveProduct();
+  }
+  saveProduct() {
+    this.productService.updateProduct(this.id, this.product).subscribe({
+      next: (data) => this.goToProductList(),
+      error: (error) => console.log(error),
+    });
+  }
+
+  goToProductList() {
+    this.router.navigate(['/productos']);
+  }
 }
